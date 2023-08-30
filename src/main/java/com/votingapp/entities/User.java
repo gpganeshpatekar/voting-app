@@ -33,7 +33,7 @@ public class User {
 	@Column(nullable = false, length = 32, unique = true)
 	private String username;
 
-	@Column(length = 16)
+	@Column(length = 64)
 	private String password;
 
 	@Column(nullable = false, length = 32, unique = true)
@@ -41,6 +41,8 @@ public class User {
 
 	@Column(nullable = false, length = 10, unique = true)
 	private String phoneno;
+	
+	private boolean active;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))

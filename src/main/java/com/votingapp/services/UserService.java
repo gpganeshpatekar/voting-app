@@ -19,5 +19,9 @@ public interface UserService {
 	
 	UserDto getUserByEmail(String email);
 	
+	boolean checkIsUsernameExist(String username);
+	boolean checkIsEmailExist(String email);
+	boolean checkIsPhoneNumberExist(String phoneno);
+	
 
 }
