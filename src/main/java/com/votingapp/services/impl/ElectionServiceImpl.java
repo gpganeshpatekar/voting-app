@@ -43,6 +43,7 @@ public class ElectionServiceImpl implements ElectionService{
 		if (userDetails != null) {
             String username = userDetails.getUsername();
             User user = this.userRepo.findByUsername(username).orElseThrow(() -> new UserNotFoundException(AppConstants.USER_NOT_FOUND));
+            election.setTotalVotes(0);
             election.setCreatedBy(user);
             Election saved = this.electionRepo.save(election);
             return this.modelMapper.map(saved, ElectionDTO.class);

@@ -30,6 +30,7 @@ public class CandidateServiceImpl implements CandidateService {
 	public CandidateDTO addCandidateToElection(Integer electionId,CandidateDTO candidateDTO) {
 		Candidate candidate = this.modelMapper.map(candidateDTO, Candidate.class);
 		Election election = this.electionRepo.findById(electionId).orElseThrow(() -> new ElectionNotFoundException(AppConstants.ELECTION_NOT_FOUND));
+		candidate.setVotes(0);
 		Candidate saved = this.candidateRepo.save(candidate);
 		election.getCandidates().add(candidate);
 		this.electionRepo.save(election);
